@@ -29,6 +29,7 @@ folder is the check, so log what you need to see in game.
 ## This plugin
 
 Page Up / Page Down (no Ctrl, Alt or Shift: Ctrl+PageUp/Down is the Boats plugin's ballast) call
-`MotorTownPlayerController.Cheat_TimeOfDay` on the game thread. The unit of TimeOfDay is learnt once from
-`MTBlueprintLibrary.GetTimeOfDayHourMinuteSeconds` (which of 0.5 / 12 / 720 reads as 12:00). The source of truth is
-`D:\MTLiveMap\mt_loader\plugins	ime_keys.cpp`.
+`MotorTownPlayerController.ClientSetTimeOfDay(TimeOfDay, Speed, Day)` on the game thread, the call the server uses to set
+a player's clock, with the current Speed (`MTTimeOfDayConfig.TimeOfDayConfig.Speed`) and Day (`MTSunSky.Day`) so only
+the hour changes. `Cheat_TimeOfDay` is ignored in shipping builds, and `MTSunSky.SolarTime` is only the sky's copy.
+The source of truth is `D:\MTLiveMap\mt_loader\plugins	ime_keys.cpp`.
